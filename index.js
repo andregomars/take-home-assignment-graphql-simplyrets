@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
 
 import typeDefs from './types/index.js';
+import { resolvers } from './resolvers/index.js';
+import { dataSources } from './services/index.js';
 
 try {
   dotenv.config();
@@ -10,7 +12,9 @@ try {
 
   const server = new ApolloServer({ 
     typeDefs, 
-    mocks: true,
+    // mocks: true,
+    resolvers,
+    dataSources,
   });
 
   await server.start();

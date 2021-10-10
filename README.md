@@ -16,9 +16,10 @@ ngrok http 4000
 - Test simpleRETS api through postman to verify request and response before layering graphql on the api
 - import apollo rest library and create simpleRETS REST resource api class for rest api data retrieving
 - Set up essential Jest config if necessary and run test code against rest api data retrieving
-- Map rest api returned json object to the predefined graphql model, if not 100% mapped between those 2 models, I'll import lodash to pick and map.
-- Run Jest to test mapping results
+- Map rest api returned json object to the predefined graphql model, ~~if not 100% mapped between those 2 models, I'll import lodash to pick and map.~~ The rest response data model and the predefined model is 100% mapped, so there is no need to introduce extra mapping mechanism, thus no need for the next step.
+- ~~Run Jest to test mapping results~~
 - Add resolver to verify graphql output in apollo studio expolrer
+- Add client cache control in rest api request through fetch api parameters 
 - Add middleware or utilize apollo context for client authentication using basic http auth
 - end2end test through apollo studio explorer
 
@@ -30,4 +31,4 @@ ngrok http 4000
 - put rest api access token and graphql client access token in .env file, but never commit into repo
 
 ## Performance Considerations
-- Assume the properties data is not updated quite often and it is okay to cache for 1 hour, so I will put cache control of 60 minutes for the client
+- Assume the properties data is not updated quite often and it is okay to cache for 1 hour, so I will put cache control of 60 minutes when retrieving simpleRESTS api data 

@@ -1,7 +1,7 @@
 export const resolvers = {
   Query: {
-    listings: async (_, __, { dataSources }) => {
-      return dataSources.simpleRetsAPI.getProperties(`Houston`);
+    listings: async (_, { city }, { dataSources }) => {
+      return dataSources.simpleRetsAPI.getProperties(city);
     },
   }
 };

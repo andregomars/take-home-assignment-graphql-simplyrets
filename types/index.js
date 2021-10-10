@@ -166,6 +166,6 @@ export default () => `
     }
 
     type Query {
-        listings: [Listing]
+        listings(city: String!): [Listing]
     }
 `;

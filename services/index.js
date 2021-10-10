@@ -9,7 +9,9 @@ export class SimpleRetsAPI extends RESTDataSource {
   }
 
   async getProperties(city) {
-    const data = await this.get(`/properties?q=${city}`);
+    const data = await this.get(`/properties?q=${city}`, null, {
+      cacheOptions: { ttl: 3600 }
+    });
     return data;
   }
 

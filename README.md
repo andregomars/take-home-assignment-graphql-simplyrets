@@ -9,6 +9,10 @@
 - Add essential start up code and libraries for serving in local
 - Serve in localhost to ensure local development and hosting is ready to go
 - Add mocks for apollo server, do this ahead can enable frontend development team to integrate with backend api in parallel without waiting.
+- Install ngrok npm package at local globally and host HTTPS for either local backend develop or remote access from frontend integration through apollo studio explorer
+```bash
+ngrok http 4000
+```
 - Test simpleRETS api through postman to verify request and response before layering graphql on the api
 - import apollo rest library and create simpleRETS REST resource api class for rest api data retrieving
 - Set up essential Jest config if necessary and run test code against rest api data retrieving

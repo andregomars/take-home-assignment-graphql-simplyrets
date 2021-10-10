@@ -1,4 +1,4 @@
-module.exports = `
+export default () => `
     type Listing {
         favoriteCount: Int
         privateRemarks: String
@@ -163,5 +163,9 @@ module.exports = `
         subTypeText: String
         yearBuilt: Int
         parking: Parking 
+    }
+
+    type Query {
+        listings: [Listing]
     }
 `;

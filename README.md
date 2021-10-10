@@ -18,6 +18,7 @@ ngrok http 4000
 - Set up essential Jest config if necessary and run test code against rest api data retrieving
 - Map rest api returned json object to the predefined graphql model, if not 100% mapped between those 2 models, I'll import lodash to pick and map.
 - Run Jest to test mapping results
+- Add resolver to verify graphql output in apollo studio expolrer
 - Add middleware or utilize apollo context for client authentication using basic http auth
 - end2end test through apollo studio explorer
 

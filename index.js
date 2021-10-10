@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer, AuthenticationError } from 'apollo-server-express';
 
 import typeDefs from './types/index.js';
 import { resolvers } from './resolvers/index.js';
@@ -15,6 +15,24 @@ try {
     // mocks: true,
     resolvers,
     dataSources,
+    context: ({ req }) => {
+      const isAuthed = req.headers.authorization === `Basic ${process.env.AUTH_TOKEN_GRAPHQL}`;
+      if (!isAuthed) throw new AuthenticationError(`Auth failed!`);
+      console.log({ isAuthed })
+      return { isAuthed };
+    },
+    // Overwrite http status to 401 once request is declined due to authentication failure
+    plugins: [
+      {
+        requestDidStart: () => ({
+          didEncounterErrors(errors, { response: { http } } ) {
+            if (http && errors.some(err => err.name === "AuthenticationError")) {
+              http.status = 401;
+            }
+          }
+        })
+      }
+    ]
   });
 
   await server.start();

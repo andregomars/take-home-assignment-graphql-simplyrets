@@ -1,6 +1,8 @@
 export const resolvers = {
   Query: {
-    listings: async (_, { city }, { dataSources }) => {
+    listings: async (_, { city }, { isAuthed, dataSources }) => {
+      if (!isAuthed) return null;
+
       return dataSources.simpleRetsAPI.getProperties(city);
     },
   }

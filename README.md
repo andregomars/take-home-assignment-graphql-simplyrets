@@ -29,6 +29,8 @@ ngrok http 4000
 
 ## Security Considerations
 - put rest api access token and graphql client access token in .env file, but never commit into repo
+- add apollo server plugins for each request to overwrite http status to 401 once the request is declined due to authentication failure, prevent simply return 500 server failure
+- hide content for unauthenticated request too, in case the authentication failure not throwing as exception in each request.
 
 ## Performance Considerations
 - Assume the properties data is not updated quite often and it is okay to cache for 1 hour, so I will put cache control of 60 minutes when retrieving simpleRESTS api data 

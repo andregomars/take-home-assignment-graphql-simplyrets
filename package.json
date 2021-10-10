@@ -3,18 +3,30 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "engines": {
     "node": "^14"
   },
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "dev": "npx nodemon index.js",
     "start": "node index.js"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {}
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-datasource-rest": "^3.2.0",
     "apollo-server-express": "3.3.0",
+    "dotenv": "^10.0.0",
     "express": "4.17.1",
-    "jest": "27.2.4"
+    "graphql": "^15.6.1"
+  },
+  "devDependencies": {
+    "jest": "^27.2.5",
+    "nodemon": "^2.0.13"
   }
 }

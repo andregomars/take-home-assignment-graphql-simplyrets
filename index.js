@@ -7,6 +7,7 @@ import typeDefs from './types/index.js';
 try {
   dotenv.config();
   const app = express();
+
   const server = new ApolloServer({ 
     typeDefs, 
     mocks: true,
@@ -22,6 +23,7 @@ try {
 
   app.listen({ port: 4000 }, () => {
     console.log(`ENV`, process.env.ENV);
+    console.log(`SIMPLERETS_API`, process.env.SIMPLERETS_API);
     console.log(`AUTH_TOKEN_SIMPLERETS`, process.env.AUTH_TOKEN_SIMPLERETS);
     console.log(`AUTH_TOKEN_GRAPHQL`, process.env.AUTH_TOKEN_GRAPHQL);
     console.log(`Listening on http://localhost:4000/graphql`)

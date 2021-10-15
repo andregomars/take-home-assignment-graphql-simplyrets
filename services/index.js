@@ -8,8 +8,9 @@ export class SimpleRetsAPI extends RESTDataSource {
     this.baseURL = process.env.SIMPLERETS_API;
   }
 
-  async getProperties(city) {
-    const data = await this.get(`/properties?q=${city}`, null, {
+  async getProperties(city, limit, offset) {
+    console.log({limit, offset})
+    const data = await this.get(`/properties?q=${city}&limit=${limit}&offset=${offset}`, null, {
       cacheOptions: { ttl: 3600 }
     });
     return data;
